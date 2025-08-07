@@ -301,10 +301,10 @@ class AltTextKeyView(ctx: Context, theme: Theme, def: KeyDef.Appearance.AltText)
         altText.visibility = View.VISIBLE
         altText.updateLayoutParams<ConstraintLayout.LayoutParams> {
             // reset
-            bottomToBottom = unset; bottomMargin = 0
+            bottomToBottom = unset; bottomMargin = 2
             rightMargin = 0
             // set
-            topToTop = parentId; topMargin = vMargin
+            topToTop = 0; topMargin = vMargin
             leftToLeft = parentId
             rightToRight = parentId
         }
