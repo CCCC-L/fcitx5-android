@@ -72,7 +72,8 @@ class MultiSwipeAlphabetKey(
     Appearance.Text(
         displayText = character,
         textSize = 23f,
-        variant = variant
+        variant = variant,
+        altText = upSymbol
     ),
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
