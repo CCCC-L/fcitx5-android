@@ -78,10 +78,10 @@ class MultiSwipeAlphabetKey(
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
         Behavior.MultiDirectionSwipe(
-            upAction = upSymbol?.let { KeyAction.FcitxKeyAction(it) },
-            downAction = downSymbol?.let { KeyAction.FcitxKeyAction(it) },
-            leftAction = leftSymbol?.let { KeyAction.FcitxKeyAction(it) },
-            rightAction = rightSymbol?.let { KeyAction.FcitxKeyAction(it) }
+            upAction = upSymbol?.let { KeyAction.CommitAction(it) },
+            downAction = downSymbol?.let { KeyAction.CommitAction(it) },
+            leftAction = leftSymbol?.let { KeyAction.CommitAction(it) },
+            rightAction = rightSymbol?.let { KeyAction.CommitAction(it) }
         )
     )
 )
