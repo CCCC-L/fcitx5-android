@@ -98,6 +98,12 @@ class CommonKeyActionListener :
                 }
                 is CommitAction -> service.postFcitxJob {
                     commitAndReset()
+                    val cursorPos = when (action.text) {
+                        "()" -> 1  // 光标在 ( 和 ) 之间
+                        "{}" -> 1  // 光标在 { 和 } 之间
+                        "[]" -> 1  // 光标在 [ 和 ] 之间
+                        else -> -1 // 使用默认位置（文本末尾）
+                    }
                     service.lifecycleScope.launch { service.commitText(action.text) }
                 }
                 is QuickPhraseAction -> service.postFcitxJob {
