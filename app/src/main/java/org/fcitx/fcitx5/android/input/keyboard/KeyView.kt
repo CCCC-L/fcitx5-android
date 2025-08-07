@@ -289,6 +289,28 @@ class AltTextKeyView(ctx: Context, theme: Theme, def: KeyDef.Appearance.AltText)
         applyLayout(resources.configuration.orientation)
     }
 
+    private fun applyTopAltTextPosition() {
+        mainText.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            // reset
+            topToTop = unset
+            bottomToTop = unset
+            // set
+            topToBottom = altText.existingOrNewId
+            bottomToBottom = parentId
+        }
+        altText.visibility = View.VISIBLE
+        altText.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            // reset
+            bottomToBottom = unset; bottomMargin = 0
+            rightMargin = 0
+            // set
+            topToTop = parentId; topMargin = vMargin
+            leftToLeft = parentId
+            rightToRight = parentId
+            centerHorizontally()
+        }
+    }
+
     private fun applyTopRightAltTextPosition() {
         mainText.updateLayoutParams<ConstraintLayout.LayoutParams> {
             // reset
@@ -348,12 +370,14 @@ class AltTextKeyView(ctx: Context, theme: Theme, def: KeyDef.Appearance.AltText)
                 else -> applyBottomAltTextPosition()
             }
             PunctuationPosition.TopRight -> applyTopRightAltTextPosition()
+            PunctuationPosition.Top -> applyTopAltTextPosition()
             PunctuationPosition.None -> applyNoAltTextPosition()
         }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
-        if (ThemeManager.prefs.punctuationPosition.getValue() == PunctuationPosition.TopRight) {
+        if (ThemeManager.prefs.punctuationPosition.getValue() == PunctuationPosition.TopRight ||
+            ThemeManager.prefs.punctuationPosition.getValue() == PunctuationPosition.Top) {
             return
         }
         applyLayout(newConfig.orientation)
