@@ -305,7 +305,7 @@ class AltTextKeyView(ctx: Context, theme: Theme, def: KeyDef.Appearance.AltText)
             bottomToBottom = unset; bottomMargin = 0
             rightMargin = 0
             // set
-            topToTop = parentId;
+            topToTop = parentId
             topMargin = vMargin
             leftToLeft = parentId
             rightToRight = parentId
