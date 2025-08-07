@@ -89,7 +89,7 @@ class ThemePrefs(sharedPreferences: SharedPreferences) :
     enum class PunctuationPosition(override val stringRes: Int) : ManagedPreferenceEnum {
         None(R.string.punctuation_pos_none),
         Bottom(R.string.punctuation_pos_bottom),
-        Top(R.string.punctuation_pos_top),
+        Top(R.string.punctuation_pos_top_right),
         TopRight(R.string.punctuation_pos_top_right);
     }
 
