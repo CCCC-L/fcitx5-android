@@ -33,13 +33,13 @@ class TextKeyboard(
         val Layout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "!", "@", "#"),
-                MultiSwipeAlphabetKey("W", "2", "!", "@", "#"),
-                MultiSwipeAlphabetKey("E", "3", "!", "@", "#"),
-                MultiSwipeAlphabetKey("R", "4", "!", "@", "#"),
-                MultiSwipeAlphabetKey("T", "5", "!", "@", "#"),
-                MultiSwipeAlphabetKey("Y", "6", "!", "@", "#"),
-                MultiSwipeAlphabetKey("U", "7", "!", "@", "#"),
-                MultiSwipeAlphabetKey("I", "8", "!", "@", "#"),
+                MultiSwipeAlphabetKey("W", "2", "''", "@", "#"),
+                MultiSwipeAlphabetKey("E", "3", "\"\"", "@", "#"),
+                MultiSwipeAlphabetKey("R", "4", "[]", "@", "#"),
+                MultiSwipeAlphabetKey("T", "5", "{}", "@", "#"),
+                MultiSwipeAlphabetKey("Y", "6", "()", "@", "#"),
+                MultiSwipeAlphabetKey("U", "7", "``", "@", "#"),
+                MultiSwipeAlphabetKey("I", "8", "<>", "@", "#"),
                 MultiSwipeAlphabetKey("O", "9", "!", "@", "#"),
                 MultiSwipeAlphabetKey("P", "0", "!", "@", "#")
             ),
