@@ -87,6 +87,10 @@ class CommonKeyActionListener :
         }
     }
 
+    private val centerCursorSymbols = arrayOf(
+        "()", "{}", "[]", "<>",
+        "\"\"", "''", "``"
+    )
     val listener by lazy {
         KeyActionListener { action, _ ->
             when (action) {
@@ -98,13 +102,8 @@ class CommonKeyActionListener :
                 }
                 is CommitAction -> service.postFcitxJob {
                     commitAndReset()
-                    val cursorPos = when (action.text) {
-                        "()" -> 1  // 光标在 ( 和 ) 之间
-                        "{}" -> 1  // 光标在 { 和 } 之间
-                        "[]" -> 1  // 光标在 [ 和 ] 之间
-                        else -> -1 // 使用默认位置（文本末尾）
-                    }
-                    service.lifecycleScope.launch { service.commitText(action.text, cursorPos) }
+                    val cursorPos = if (action.text in centerCursorSymbols) 1 else -1
+                    service.commitText(action.text, cursorPos)
                 }
                 is QuickPhraseAction -> service.postFcitxJob {
                     commitAndReset()
