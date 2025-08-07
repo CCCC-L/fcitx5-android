@@ -32,37 +32,37 @@ class TextKeyboard(
 
         val Layout: List<List<KeyDef>> = listOf(
             listOf(
-                AlphabetKey("Q", "1"),
-                AlphabetKey("W", "2"),
-                AlphabetKey("E", "3"),
-                AlphabetKey("R", "4"),
-                AlphabetKey("T", "5"),
-                AlphabetKey("Y", "6"),
-                AlphabetKey("U", "7"),
-                AlphabetKey("I", "8"),
-                AlphabetKey("O", "9"),
-                AlphabetKey("P", "0")
+                MultiSwipeAlphabetKey("Q", "1", "!", "@", "#"),
+                MultiSwipeAlphabetKey("W", "2", "!", "@", "#"),
+                MultiSwipeAlphabetKey("E", "3", "!", "@", "#"),
+                MultiSwipeAlphabetKey("R", "4", "!", "@", "#"),
+                MultiSwipeAlphabetKey("T", "5", "!", "@", "#"),
+                MultiSwipeAlphabetKey("Y", "6", "!", "@", "#"),
+                MultiSwipeAlphabetKey("U", "7", "!", "@", "#"),
+                MultiSwipeAlphabetKey("I", "8", "!", "@", "#"),
+                MultiSwipeAlphabetKey("O", "9", "!", "@", "#"),
+                MultiSwipeAlphabetKey("P", "0", "!", "@", "#")
             ),
             listOf(
-                AlphabetKey("A", "@"),
-                AlphabetKey("S", "*"),
-                AlphabetKey("D", "+"),
-                AlphabetKey("F", "-"),
-                AlphabetKey("G", "="),
-                AlphabetKey("H", "/"),
-                AlphabetKey("J", "#"),
-                AlphabetKey("K", "("),
-                AlphabetKey("L", ")")
+                MultiSwipeAlphabetKey("A", "@", "!", "@", "#"),
+                MultiSwipeAlphabetKey("S", "*", "!", "@", "#"),
+                MultiSwipeAlphabetKey("D", "+", "!", "@", "#"),
+                MultiSwipeAlphabetKey("F", "-", "!", "@", "#"),
+                MultiSwipeAlphabetKey("G", "=", "!", "@", "#"),
+                MultiSwipeAlphabetKey("H", "/", "!", "@", "#"),
+                MultiSwipeAlphabetKey("J", "#", "!", "@", "#"),
+                MultiSwipeAlphabetKey("K", "(", "!", "@", "#"),
+                MultiSwipeAlphabetKey("L", ")", "!", "@", "#")
             ),
             listOf(
                 CapsKey(),
-                AlphabetKey("Z", "'"),
-                AlphabetKey("X", ":"),
-                AlphabetKey("C", "\""),
-                AlphabetKey("V", "?"),
-                AlphabetKey("B", "!"),
-                AlphabetKey("N", "~"),
-                AlphabetKey("M", "\\"),
+                MultiSwipeAlphabetKey("Z", "'", "!", "@", "#"),
+                MultiSwipeAlphabetKey("X", ":", "!", "@", "#"),
+                MultiSwipeAlphabetKey("C", "\"", "!", "@", "#"),
+                MultiSwipeAlphabetKey("V", "?", "!", "@", "#"),
+                MultiSwipeAlphabetKey("B", "!", "!", "@", "#"),
+                MultiSwipeAlphabetKey("N", "~", "!", "@", "#"),
+                MultiSwipeAlphabetKey("M", "\\", "!", "@", "#"),
                 BackspaceKey()
             ),
             listOf(
