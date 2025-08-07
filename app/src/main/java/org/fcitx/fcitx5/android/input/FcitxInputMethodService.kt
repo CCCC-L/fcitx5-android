@@ -344,18 +344,6 @@ class FcitxInputMethodService : LifecycleInputMethodService() {
 
     fun commitText(text: String, cursor: Int = -1) {
         val ic = currentInputConnection ?: return
-
-        // 检测括号对并自动移动光标到中间
-        if (shouldMoveCursorToMiddle(text)) {
-            // 先提交文本
-            ic.commitText(text, 1)
-            // 然后将光标移动到中间位置
-            postFcitxJob {
-                moveCursor(-1)
-            }
-            return
-        }
-
         // when composing text equals commit content, finish composing text as-is
         if (composing.isNotEmpty() && composingText.toString() == text) {
             val c = if (cursor == -1) text.length else cursor
@@ -386,21 +374,6 @@ class FcitxInputMethodService : LifecycleInputMethodService() {
             }
         }
     }
-
-    private fun shouldMoveCursorToMiddle(text: String): Boolean {
-        al bracketPairs = setOf (
-                // 基本括号
-                "()", "[]", "{}",
-                // 引号
-                "\"\"", "''", "``",
-                // 中文括号
-                "「」", "『』", "【】", "《》",
-                // 其他符号
-                "⟨⟩", "⟪⟫", "⦃⦄"
-        )
-        return bracketPairs.contains(text)
-    }
-
 
     private fun sendDownKeyEvent(eventTime: Long, keyEventCode: Int, metaState: Int = 0) {
         currentInputConnection?.sendKeyEvent(
