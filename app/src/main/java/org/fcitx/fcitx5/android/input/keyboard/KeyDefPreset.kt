@@ -69,7 +69,7 @@ class MultiSwipeAlphabetKey(
     val rightSymbol: String?,
     variant: Variant = Variant.Normal
 ) : KeyDef(
-    Appearance.Text(
+    Appearance.AltText(
         displayText = character,
         textSize = 23f,
         variant = variant,
