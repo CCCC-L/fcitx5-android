@@ -104,7 +104,7 @@ class CommonKeyActionListener :
                         "[]" -> 1  // 光标在 [ 和 ] 之间
                         else -> -1 // 使用默认位置（文本末尾）
                     }
-                    service.lifecycleScope.launch { service.commitText(action.text) }
+                    service.lifecycleScope.launch { service.commitText(action.text, cursorPos) }
                 }
                 is QuickPhraseAction -> service.postFcitxJob {
                     commitAndReset()
