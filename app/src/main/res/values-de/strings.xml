@@ -100,6 +100,7 @@
     <string name="navbar_background">Hintergrund der Navigationsleiste</string>
     <string name="navbar_bkg_none">Kein Hintergrund</string>
     <string name="navbar_bkg_full">Hintergrundbild der Tastatur</string>
+    <string name="punctuation_pos_top">Top</string>
     <string name="punctuation_pos_top_right">Oben rechts</string>
     <string name="disable_animation">Animation deaktivieren</string>
     <string name="import_from_file">Aus Dataei importieren ...</string>
