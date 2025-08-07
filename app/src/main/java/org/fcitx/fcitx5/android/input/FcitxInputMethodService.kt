@@ -214,7 +214,20 @@ class FcitxInputMethodService : LifecycleInputMethodService() {
     private fun handleFcitxEvent(event: FcitxEvent<*>) {
         when (event) {
             is FcitxEvent.CommitStringEvent -> {
-                commitText(event.data.text, event.data.cursor)
+                val text = event.data.text
+                val cursor = event.data.cursor
+
+                // 检测括号对并自动移动光标到中间
+                if (shouldMoveCursorToMiddle(text)) {
+                    commitText(text)
+                    // 异步移动光标到中间位置
+                    postFcitxJob {
+                        // 使用现有的光标移动功能
+                        repositionCursor(-1)
+                    }
+                } else {
+                    commitText(text, cursor)
+                }
             }
             is FcitxEvent.KeyEvent -> event.data.let event@{
                 if (it.states.virtual) {
