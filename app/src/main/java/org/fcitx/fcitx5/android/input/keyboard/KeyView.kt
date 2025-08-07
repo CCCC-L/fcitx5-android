@@ -292,7 +292,7 @@ class AltTextKeyView(ctx: Context, theme: Theme, def: KeyDef.Appearance.AltText)
     private fun applyTopAltTextPosition() {
         mainText.updateLayoutParams<ConstraintLayout.LayoutParams> {
             // reset
-            topMargin = 1
+            topMargin = 0
             bottomToTop = unset
             // set
             topToTop = parentId
@@ -304,7 +304,7 @@ class AltTextKeyView(ctx: Context, theme: Theme, def: KeyDef.Appearance.AltText)
             bottomToBottom = unset; bottomMargin = 0
             rightMargin = 0
             // set
-            topToTop = parentId; topMargin = vMargin
+            topToTop = parentId; topMargin = 1
             leftToLeft = parentId
             rightToRight = parentId
         }
