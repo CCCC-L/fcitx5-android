@@ -33,6 +33,9 @@ import org.fcitx.fcitx5.android.input.keyboard.KeyAction.SpaceLongPressAction
 import org.fcitx.fcitx5.android.input.keyboard.KeyAction.SymAction
 import org.fcitx.fcitx5.android.input.keyboard.KeyAction.UnicodeAction
 import org.fcitx.fcitx5.android.input.keyboard.KeyAction.SelectAllAction
+import org.fcitx.fcitx5.android.input.keyboard.KeyAction.CutAction
+import org.fcitx.fcitx5.android.input.keyboard.KeyAction.CopyAction
+import org.fcitx.fcitx5.android.input.keyboard.KeyAction.PasteAction
 import org.fcitx.fcitx5.android.input.picker.PickerWindow
 import org.fcitx.fcitx5.android.input.wm.InputWindowManager
 import org.fcitx.fcitx5.android.utils.switchToNextIME
@@ -190,6 +193,15 @@ class CommonKeyActionListener :
                 }
                 is SelectAllAction -> {
                     service.currentInputConnection?.performContextMenuAction(android.R.id.selectAll)
+                }
+                is CutAction -> {
+                    service.currentInputConnection?.performContextMenuAction(android.R.id.cut)
+                }
+                is CopyAction -> {
+                    service.currentInputConnection?.performContextMenuAction(android.R.id.copy)
+                }
+                is PasteAction -> {
+                    service.currentInputConnection?.performContextMenuAction(android.R.id.paste)
                 }
                 else -> {}
             }
