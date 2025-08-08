@@ -44,7 +44,7 @@ class NumberKeyboard(
                 BackspaceKey(0.15f)
             ),
             listOf(
-                LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, 0.13333f, KeyDef.Appearance.Variant.AltForeground),
+                LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, 0.15f, KeyDef.Appearance.Variant.AltForeground),
                 LayoutSwitchKey("ABC", TextKeyboard.Name, 0.13333f),
                 NumPadKey(",", 0xffac, 23f, 0.1f, KeyDef.Appearance.Variant.Alternative),
                 NumPadKey("0", 0xffb0, 30f, 0.23334f),
