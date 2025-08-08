@@ -167,34 +167,29 @@ abstract class BaseKeyboard(
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
                         GestureType.Move -> {
-                            // 只有在Y轴滑动不明显时才处理X轴滑动
                             val absX = kotlin.math.abs(event.totalX)
                             val absY = kotlin.math.abs(event.totalY)
 
-                            // 如果Y轴滑动更明显，不处理X轴移动
-                            if (absY > absX) {
-                                false
-                            } else {
-                                when (val count = event.countX) {
-                                    0 -> false
-                                    else -> {
-                                        val sym = if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
-                                        val action = KeyAction.SymAction(KeySym(sym), KeyStates.Virtual)
-                                        repeat(count.absoluteValue) {
-                                            onAction(action)
-                                            if (hapticOnRepeat) InputFeedbacks.hapticFeedback(view)
-                                        }
-                                        true
-                                    }
+                            // 增加容错：只有当水平滑动明显大于垂直滑动时才处理光标移动
+                            if (absX > absY * 1.5 && event.countX != 0) {  // 1.5倍的容错
+                                val count = event.countX
+                                val sym = if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
+                                val action = KeyAction.SymAction(KeySym(sym), KeyStates.Virtual)
+                                repeat(count.absoluteValue) {
+                                    onAction(action)
+                                    if (hapticOnRepeat) InputFeedbacks.hapticFeedback(view)
                                 }
+                                true
+                            } else {
+                                false
                             }
                         }
                         GestureType.Up -> {
-                            // 检查是否为上划手势，并确保Y轴滑动比X轴更明显
                             val absX = kotlin.math.abs(event.totalX)
                             val absY = kotlin.math.abs(event.totalY)
 
-                            if (!event.consumed && event.totalY < 0 && absY > absX) {
+                            // 增加容错：垂直滑动需要明显大于水平滑动
+                            if (!event.consumed && event.totalY < 0 && absY > absX * 1.2) {  // 1.2倍的容错
                                 onAction(KeyAction.LangSwitchAction)
                                 true
                             } else {
