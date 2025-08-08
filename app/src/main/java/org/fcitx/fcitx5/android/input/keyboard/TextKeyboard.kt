@@ -68,6 +68,7 @@ class TextKeyboard(
                 BackspaceKey()
             ),
             listOf(
+                LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, 0.13333f, KeyDef.Appearance.Variant.AltForeground),
                 LanguageKey(),
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(),
