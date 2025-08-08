@@ -163,7 +163,7 @@ abstract class BaseKeyboard(
                 swipeEnabled = spaceSwipeMoveCursor.getValue()
                 swipeRepeatEnabled = true
                 swipeThresholdX = selectionSwipeThreshold
-                swipeThresholdY = selectionSwipeThreshold  // 启用Y轴滑动
+                swipeThresholdY = inputSwipeThreshold  // 启用Y轴滑动
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
                         GestureType.Move -> when (val count = event.countX) {
