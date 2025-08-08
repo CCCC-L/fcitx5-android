@@ -187,6 +187,9 @@ class CommonKeyActionListener :
                         SpaceLongPressBehavior.ShowPicker -> showInputMethodPicker()
                     }
                 }
+                is SelectAllAction -> {
+                    showInputMethodPicker()
+                }
                 else -> {}
             }
         }
