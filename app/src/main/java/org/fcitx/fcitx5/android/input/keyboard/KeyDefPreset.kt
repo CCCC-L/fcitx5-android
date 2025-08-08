@@ -63,6 +63,7 @@ class AlphabetKey(
 
 class MultiSwipeAlphabetKey(
     val character: String,
+    val altText: String,
     val up: Any?,
     val down: Any?,
     val left: Any?,
@@ -73,7 +74,7 @@ class MultiSwipeAlphabetKey(
         displayText = character,
         textSize = 23f,
         variant = variant,
-        altText = "{ }"
+        altText = altText
     ),
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
