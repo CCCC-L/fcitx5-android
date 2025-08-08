@@ -164,24 +164,37 @@ abstract class BaseKeyboard(
                 swipeRepeatEnabled = true
                 swipeThresholdX = selectionSwipeThreshold
                 swipeThresholdY = inputSwipeThreshold
-
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
-                        GestureType.Move -> when (val count = event.countX) {
-                            0 -> false
-                            else -> {
-                                val sym = if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
-                                val action = KeyAction.SymAction(KeySym(sym), KeyStates.Virtual)
-                                repeat(count.absoluteValue) {
-                                    onAction(action)
-                                    if (hapticOnRepeat) InputFeedbacks.hapticFeedback(view)
+                        GestureType.Move -> {
+                            // 只有在Y轴滑动不明显时才处理X轴滑动
+                            val absX = kotlin.math.abs(event.totalX)
+                            val absY = kotlin.math.abs(event.totalY)
+
+                            // 如果Y轴滑动更明显，不处理X轴移动
+                            if (absY > absX) {
+                                false
+                            } else {
+                                when (val count = event.countX) {
+                                    0 -> false
+                                    else -> {
+                                        val sym = if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
+                                        val action = KeyAction.SymAction(KeySym(sym), KeyStates.Virtual)
+                                        repeat(count.absoluteValue) {
+                                            onAction(action)
+                                            if (hapticOnRepeat) InputFeedbacks.hapticFeedback(view)
+                                        }
+                                        true
+                                    }
                                 }
-                                true
                             }
                         }
                         GestureType.Up -> {
-                            // 使用绝对Y值检测上划，不依赖Y轴阈值
-                            if (!event.consumed && event.totalY < 0) {  // 直接检查原始Y值
+                            // 检查是否为上划手势，并确保Y轴滑动比X轴更明显
+                            val absX = kotlin.math.abs(event.totalX)
+                            val absY = kotlin.math.abs(event.totalY)
+
+                            if (!event.consumed && event.totalY < 0 && absY > absX) {
                                 onAction(KeyAction.LangSwitchAction)
                                 true
                             } else {
