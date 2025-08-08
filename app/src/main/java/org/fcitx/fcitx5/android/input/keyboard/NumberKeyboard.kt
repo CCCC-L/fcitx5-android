@@ -41,12 +41,12 @@ class NumberKeyboard(
                 NumPadKey("7", 0xffb7, 30f, 0f),
                 NumPadKey("8", 0xffb8, 30f, 0f),
                 NumPadKey("9", 0xffb9, 30f, 0f),
-                BackspaceKey()
+                BackspaceKey(0.15f)
             ),
             listOf(
-                LayoutSwitchKey("ABC", TextKeyboard.Name),
-                NumPadKey(",", 0xffac, 23f, 0.1f, KeyDef.Appearance.Variant.Alternative),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, 0.13333f, KeyDef.Appearance.Variant.AltForeground),
+                LayoutSwitchKey("ABC", TextKeyboard.Name, 0.13333f),
+                NumPadKey(",", 0xffac, 23f, 0.1f, KeyDef.Appearance.Variant.Alternative),
                 NumPadKey("0", 0xffb0, 30f, 0.23334f),
                 NumPadKey("=", 0xffbd, 23f, 0.13333f, KeyDef.Appearance.Variant.AltForeground),
                 NumPadKey(".", 0xffae, 23f, 0.1f, KeyDef.Appearance.Variant.Alternative),
