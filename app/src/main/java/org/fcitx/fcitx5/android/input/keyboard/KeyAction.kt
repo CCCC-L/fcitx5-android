@@ -40,4 +40,12 @@ sealed class KeyAction {
     data class PickerSwitchAction(val key: PickerWindow.Key? = null) : KeyAction()
 
     data object SpaceLongPressAction : KeyAction()
+
+    data object SelectAllAction : KeyAction()
+
+    data object CutAction : KeyAction()
+
+    data object CopyAction : KeyAction()
+
+    data object PasteAction : KeyAction()
 }

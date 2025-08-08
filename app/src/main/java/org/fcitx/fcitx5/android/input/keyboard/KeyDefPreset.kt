@@ -63,28 +63,40 @@ class AlphabetKey(
 
 class MultiSwipeAlphabetKey(
     val character: String,
-    val upSymbol: String?,
-    val downSymbol: String?,
-    val leftSymbol: String?,
-    val rightSymbol: String?,
+    val altText: String = "",
+    val up: Any?,
+    val down: Any?,
+    val left: Any?,
+    val right: Any?,
     variant: Variant = Variant.Normal
 ) : KeyDef(
     Appearance.AltText(
         displayText = character,
         textSize = 23f,
         variant = variant,
-        altText = "{ }"
+        altText = altText
     ),
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
         Behavior.MultiDirectionSwipe(
-            upAction = upSymbol?.let { KeyAction.CommitAction(it) },
-            downAction = downSymbol?.let { KeyAction.CommitAction(it) },
-            leftAction = leftSymbol?.let { KeyAction.CommitAction(it) },
-            rightAction = rightSymbol?.let { KeyAction.CommitAction(it) }
+            upAction = convertToKeyAction(up),
+            downAction = convertToKeyAction(down),
+            leftAction = convertToKeyAction(left),
+            rightAction = convertToKeyAction(right)
         )
     )
-)
+) {
+    companion object {
+        private fun convertToKeyAction(param: Any?): KeyAction? {
+            return when (param) {
+                is String -> KeyAction.CommitAction(param)
+                is KeyAction -> param
+                null -> null
+                else -> throw IllegalArgumentException("Parameter must be String or KeyAction")
+            }
+        }
+    }
+}
 
 class AlphabetDigitKey(
     val character: String,
@@ -122,7 +134,7 @@ class CapsKey : KeyDef(
     Appearance.Image(
         src = R.drawable.ic_capslock_none,
         viewId = R.id.button_caps,
-        percentWidth = 0.15f,
+        percentWidth = 0.1f,
         variant = Variant.Alternative
     ),
     setOf(
@@ -135,7 +147,7 @@ class CapsKey : KeyDef(
 class LayoutSwitchKey(
     displayText: String,
     val to: String = "",
-    percentWidth: Float = 0.15f,
+    percentWidth: Float = 0.1f,
     variant: Variant = Variant.Alternative
 ) : KeyDef(
     Appearance.Text(
@@ -151,7 +163,7 @@ class LayoutSwitchKey(
 )
 
 class BackspaceKey(
-    percentWidth: Float = 0.15f,
+    percentWidth: Float = 0.2f,
     variant: Variant = Variant.Alternative
 ) : KeyDef(
     Appearance.Image(
@@ -232,7 +244,7 @@ class LanguageKey : KeyDef(
 class SpaceKey : KeyDef(
     Appearance.Text(
         displayText = " ",
-        textSize = 13f,
+        textSize = 13.5f,
         percentWidth = 0f,
         border = Border.Special,
         viewId = R.id.button_space,
