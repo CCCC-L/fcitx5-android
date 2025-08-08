@@ -672,6 +672,10 @@ class FcitxInputMethodService : LifecycleInputMethodService() {
         Timber.d("onStartInputView: restarting=$restarting")
         postFcitxJob {
             focus(true)
+            val enabledMethods = enabledIme()
+            if (enabledMethods.isNotEmpty()) {
+                activateIme(enabledMethods[0].uniqueName)
+            }
         }
         if (inputDeviceMgr.evaluateOnStartInputView(info, this)) {
             // because onStartInputView will always be called after onStartInput,
