@@ -170,8 +170,8 @@ abstract class BaseKeyboard(
                             val absX = kotlin.math.abs(event.totalX)
                             val absY = kotlin.math.abs(event.totalY)
 
-                            // 增加容错：只有当水平滑动明显大于垂直滑动时才处理光标移动
-                            if (absX > absY * 1.5 && event.countX != 0) {  // 1.5倍的容错
+                            // 只有当水平滑动明显且垂直分量很小时才处理光标移动
+                            if (absX > 2 && absY < absX * 0.5 && event.countX != 0) {
                                 val count = event.countX
                                 val sym = if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
                                 val action = KeyAction.SymAction(KeySym(sym), KeyStates.Virtual)
@@ -188,8 +188,8 @@ abstract class BaseKeyboard(
                             val absX = kotlin.math.abs(event.totalX)
                             val absY = kotlin.math.abs(event.totalY)
 
-                            // 增加容错：垂直滑动需要明显大于水平滑动
-                            if (!event.consumed && event.totalY < 0 && absY > absX * 1.2) {  // 1.2倍的容错
+                            // 只要是向上滑动且有足够的垂直分量就认为是上滑
+                            if (!event.consumed && event.totalY < 0 && absY > 2) {
                                 onAction(KeyAction.LangSwitchAction)
                                 true
                             } else {
