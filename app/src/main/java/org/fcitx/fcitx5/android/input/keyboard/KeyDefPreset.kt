@@ -63,7 +63,7 @@ class AlphabetKey(
 
 class MultiSwipeAlphabetKey(
     val character: String,
-    val altText: String = "",
+    val altText: String,
     val up: Any?,
     val down: Any?,
     val left: Any?,
