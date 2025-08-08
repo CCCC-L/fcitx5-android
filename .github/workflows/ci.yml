@@ -55,7 +55,6 @@ jobs:
       - name: Build Release APK
         run: |
           ./gradlew :app:assembleRelease
-          ./gradlew :assembleReleasePlugins
 
       - name: Move plugin APKs
         shell: bash
