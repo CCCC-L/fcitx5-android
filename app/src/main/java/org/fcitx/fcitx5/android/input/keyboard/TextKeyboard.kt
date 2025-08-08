@@ -70,6 +70,7 @@ class TextKeyboard(
             listOf(
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
                 LayoutSwitchKey("123", NumberKeyboard.Name),
+                LanguageKey(),
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
