@@ -182,8 +182,7 @@ abstract class BaseKeyboard(
                         GestureType.Up -> {
                             // 使用绝对Y值检测上划，不依赖Y轴阈值
                             if (!event.consumed && event.totalY < -3) {  // 直接检查原始Y值
-                                val swipeBehavior = def.behaviors.find { it is KeyDef.Behavior.Swipe } as? KeyDef.Behavior.Swipe
-                                swipeBehavior?.let { onAction(it.action) }
+                                onAction(KeyAction.LangSwitchAction)
                                 true
                             } else {
                                 false

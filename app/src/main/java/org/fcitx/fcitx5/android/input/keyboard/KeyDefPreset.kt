@@ -253,7 +253,6 @@ class SpaceKey : KeyDef(
     setOf(
         Behavior.Press(KeyAction.SymAction(KeySym(FcitxKeyMapping.FcitxKey_space))),
         Behavior.LongPress(KeyAction.SpaceLongPressAction),
-        Behavior.Swipe(KeyAction.LangSwitchAction)
     )
 )
 
