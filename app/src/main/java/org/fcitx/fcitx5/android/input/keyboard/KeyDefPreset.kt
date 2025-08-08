@@ -134,7 +134,7 @@ class CapsKey : KeyDef(
     Appearance.Image(
         src = R.drawable.ic_capslock_none,
         viewId = R.id.button_caps,
-        percentWidth = 0.15f,
+        percentWidth = 0.1f,
         variant = Variant.Alternative
     ),
     setOf(
@@ -147,7 +147,7 @@ class CapsKey : KeyDef(
 class LayoutSwitchKey(
     displayText: String,
     val to: String = "",
-    percentWidth: Float = 0.15f,
+    percentWidth: Float = 0.1f,
     variant: Variant = Variant.Alternative
 ) : KeyDef(
     Appearance.Text(
@@ -163,7 +163,7 @@ class LayoutSwitchKey(
 )
 
 class BackspaceKey(
-    percentWidth: Float = 0.15f,
+    percentWidth: Float = 0.2f,
     variant: Variant = Variant.Alternative
 ) : KeyDef(
     Appearance.Image(
@@ -244,7 +244,7 @@ class LanguageKey : KeyDef(
 class SpaceKey : KeyDef(
     Appearance.Text(
         displayText = " ",
-        textSize = 13f,
+        textSize = 13.5f,
         percentWidth = 0f,
         border = Border.Special,
         viewId = R.id.button_space,

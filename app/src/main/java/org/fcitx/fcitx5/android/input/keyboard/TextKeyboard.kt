@@ -46,25 +46,25 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("P", "0", "0", "!", "@", "#")
             ),
             listOf(
-                MultiSwipeAlphabetKey("A", "@", "@", "!", "@", "#"),
-                MultiSwipeAlphabetKey("S", "*", "*", "!", "@", "#"),
-                MultiSwipeAlphabetKey("D", "+", "+", "!", "@", "#"),
-                MultiSwipeAlphabetKey("F", "-", "-", "!", "@", "#"),
-                MultiSwipeAlphabetKey("G", "=", "=", "!", "@", "#"),
-                MultiSwipeAlphabetKey("H", "/", "/", "!", "@", "#"),
-                MultiSwipeAlphabetKey("J", "#", "#", "!", "@", "#"),
-                MultiSwipeAlphabetKey("K", "(", "(", "!", "@", "#"),
-                MultiSwipeAlphabetKey("L", ")", ")", "!", "@", "#")
+                MultiSwipeAlphabetKey("A", "\\", "\\", null, null, null),
+                MultiSwipeAlphabetKey("S", "*  /", "//", null, "*", "/"),
+                MultiSwipeAlphabetKey("D", "!  =", "!=", null, "!", "="),
+                MultiSwipeAlphabetKey("F", "&  |", "&&", "||", "&", "|"),
+                MultiSwipeAlphabetKey("G", "^  ~", null, null, "^", "~"),
+                MultiSwipeAlphabetKey("H", "<  >", "<>", null, "<", ">"),
+                MultiSwipeAlphabetKey("J", "[  ]", "[]", null, "[", "]"),
+                MultiSwipeAlphabetKey("K", "{  }", "{}", null, "{", "}"),
+                MultiSwipeAlphabetKey("L", "?", "?", null, null, null)
             ),
             listOf(
                 CapsKey(),
-                MultiSwipeAlphabetKey("Z", "'", KeyAction.SelectAllAction, "!", "@", "#"),
-                MultiSwipeAlphabetKey("X", ":", KeyAction.CutAction, "!", "@", "#"),
-                MultiSwipeAlphabetKey("C", "\"", KeyAction.CopyAction, "!", "@", "#"),
-                MultiSwipeAlphabetKey("V", "?", KeyAction.PasteAction, "!", "@", "#"),
-                MultiSwipeAlphabetKey("B", "!", "!", "!", "@", "#"),
-                MultiSwipeAlphabetKey("N", "~", "~", "!", "@", "#"),
-                MultiSwipeAlphabetKey("M", "\\", "\\", "!", "@", "#"),
+                MultiSwipeAlphabetKey("Z", "+  -", KeyAction.SelectAllAction, null, "+", "-"),
+                MultiSwipeAlphabetKey("X", "@  #", KeyAction.CutAction, null, "@", "#"),
+                MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%"),
+                MultiSwipeAlphabetKey("V", ":  `", KeyAction.PasteAction, null, ":", "`"),
+                MultiSwipeAlphabetKey("B", ";", ";", null, null, null),
+                MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")"),
+                MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'"),
                 BackspaceKey()
             ),
             listOf(
