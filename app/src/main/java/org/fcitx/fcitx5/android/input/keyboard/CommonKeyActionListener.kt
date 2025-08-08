@@ -189,7 +189,7 @@ class CommonKeyActionListener :
                     }
                 }
                 is SelectAllAction -> {
-                    showInputMethodPicker()
+                    service.currentInputConnection?.performContextMenuAction(android.R.id.selectAll)
                 }
                 else -> {}
             }
