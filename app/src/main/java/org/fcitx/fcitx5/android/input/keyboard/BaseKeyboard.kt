@@ -163,7 +163,7 @@ abstract class BaseKeyboard(
                 swipeEnabled = spaceSwipeMoveCursor.getValue()
                 swipeRepeatEnabled = true
                 swipeThresholdX = selectionSwipeThreshold
-                swipeThresholdY = disabledSwipeThreshold
+                swipeThresholdY = inputSwipeThreshold
 
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
@@ -181,7 +181,7 @@ abstract class BaseKeyboard(
                         }
                         GestureType.Up -> {
                             // 使用绝对Y值检测上划，不依赖Y轴阈值
-                            if (!event.consumed && event.totalY < -3) {  // 直接检查原始Y值
+                            if (!event.consumed && event.totalY < 0) {  // 直接检查原始Y值
                                 onAction(KeyAction.LangSwitchAction)
                                 true
                             } else {
