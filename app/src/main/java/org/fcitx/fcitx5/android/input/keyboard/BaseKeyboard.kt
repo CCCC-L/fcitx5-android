@@ -163,14 +163,14 @@ abstract class BaseKeyboard(
                 swipeEnabled = spaceSwipeMoveCursor.getValue()
                 swipeRepeatEnabled = true
                 swipeThresholdX = selectionSwipeThreshold
-                swipeThresholdY = inputSwipeThreshold  // 启用Y轴滑动
+                swipeThresholdY = disabledSwipeThreshold
+
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
                         GestureType.Move -> when (val count = event.countX) {
                             0 -> false
                             else -> {
-                                val sym =
-                                    if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
+                                val sym = if (count > 0) FcitxKeyMapping.FcitxKey_Right else FcitxKeyMapping.FcitxKey_Left
                                 val action = KeyAction.SymAction(KeySym(sym), KeyStates.Virtual)
                                 repeat(count.absoluteValue) {
                                     onAction(action)
@@ -180,8 +180,8 @@ abstract class BaseKeyboard(
                             }
                         }
                         GestureType.Up -> {
-                            // 检查是否为上划手势
-                            if (!event.consumed && swipeSymbolDirection.checkY(event.totalY) && event.totalY < 0) {
+                            // 使用绝对Y值检测上划，不依赖Y轴阈值
+                            if (!event.consumed && event.totalY < -3) {  // 直接检查原始Y值
                                 val swipeBehavior = def.behaviors.find { it is KeyDef.Behavior.Swipe } as? KeyDef.Behavior.Swipe
                                 swipeBehavior?.let { onAction(it.action) }
                                 true
@@ -192,6 +192,7 @@ abstract class BaseKeyboard(
                         else -> false
                     }
                 }
+            }
             } else if (def is BackspaceKey) {
                 swipeEnabled = true
                 swipeRepeatEnabled = true
