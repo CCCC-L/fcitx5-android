@@ -163,7 +163,7 @@ abstract class BaseKeyboard(
                 swipeEnabled = spaceSwipeMoveCursor.getValue()
                 swipeRepeatEnabled = true
                 swipeThresholdX = selectionSwipeThreshold
-                swipeThresholdY = disabledSwipeThreshold
+                swipeThresholdY = selectionSwipeThreshold  // 启用Y轴滑动
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
                         GestureType.Move -> when (val count = event.countX) {
@@ -177,6 +177,16 @@ abstract class BaseKeyboard(
                                     if (hapticOnRepeat) InputFeedbacks.hapticFeedback(view)
                                 }
                                 true
+                            }
+                        }
+                        GestureType.Up -> {
+                            // 检查是否为上划手势
+                            if (!event.consumed && swipeSymbolDirection.checkY(event.totalY) && event.totalY < 0) {
+                                val swipeBehavior = def.behaviors.find { it is KeyDef.Behavior.Swipe } as? KeyDef.Behavior.Swipe
+                                swipeBehavior?.let { onAction(it.action) }
+                                true
+                            } else {
+                                false
                             }
                         }
                         else -> false
