@@ -78,13 +78,24 @@ class MultiSwipeAlphabetKey(
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
         Behavior.MultiDirectionSwipe(
-            upAction = up?.let { KeyAction.CommitAction(it) },
-            downAction = down?.let { KeyAction.CommitAction(it) },
-            leftAction = left?.let { KeyAction.CommitAction(it) },
-            rightAction = right?.let { KeyAction.CommitAction(it) }
+            upAction = convertToKeyAction(up),
+            downAction = convertToKeyAction(down),
+            leftAction = convertToKeyAction(left),
+            rightAction = convertToKeyAction(right)
         )
     )
-)
+) {
+    companion object {
+        private fun convertToKeyAction(param: Any?): KeyAction? {
+            return when (param) {
+                is String -> KeyAction.CommitAction(param)
+                is KeyAction -> param
+                null -> null
+                else -> throw IllegalArgumentException("Parameter must be String or KeyAction")
+            }
+        }
+    }
+}
 
 class AlphabetDigitKey(
     val character: String,
