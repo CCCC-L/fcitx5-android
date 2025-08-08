@@ -44,7 +44,7 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("P", "0", "0", "!", "@", "#")
             ),
             listOf(
-                MultiSwipeAlphabetKey("A", "@", "!", "@", "#"),
+                MultiSwipeAlphabetKey("A", "@", "@", "!", "@", "#"),
                 MultiSwipeAlphabetKey("S", "*", "*", "!", "@", "#"),
                 MultiSwipeAlphabetKey("D", "+", "+", "!", "@", "#"),
                 MultiSwipeAlphabetKey("F", "-", "-", "!", "@", "#"),
