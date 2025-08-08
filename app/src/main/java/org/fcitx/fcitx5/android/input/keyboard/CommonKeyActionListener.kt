@@ -187,18 +187,6 @@ class CommonKeyActionListener :
                         SpaceLongPressBehavior.ShowPicker -> showInputMethodPicker()
                     }
                 }
-                is SelectAllAction -> {
-                    service.currentInputConnection?.performContextMenuAction(android.R.id.selectAll)
-                }
-                is CutAction -> {
-                    service.currentInputConnection?.performContextMenuAction(android.R.id.cut)
-                }
-                is CopyAction -> {
-                    service.currentInputConnection?.performContextMenuAction(android.R.id.copy)
-                }
-                is PasteAction -> {
-                    service.currentInputConnection?.performContextMenuAction(android.R.id.paste)
-                }
                 else -> {}
             }
         }
