@@ -63,10 +63,10 @@ class AlphabetKey(
 
 class MultiSwipeAlphabetKey(
     val character: String,
-    val upSymbol: String?,
-    val downSymbol: String?,
-    val leftSymbol: String?,
-    val rightSymbol: String?,
+    val up: Any?,
+    val down: Any?,
+    val left: Any?,
+    val right: Any?,
     variant: Variant = Variant.Normal
 ) : KeyDef(
     Appearance.AltText(
@@ -78,10 +78,10 @@ class MultiSwipeAlphabetKey(
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
         Behavior.MultiDirectionSwipe(
-            upAction = upSymbol?.let { KeyAction.CommitAction(it) },
-            downAction = downSymbol?.let { KeyAction.CommitAction(it) },
-            leftAction = leftSymbol?.let { KeyAction.CommitAction(it) },
-            rightAction = rightSymbol?.let { KeyAction.CommitAction(it) }
+            upAction = up?.let { KeyAction.CommitAction(it) },
+            downAction = down?.let { KeyAction.CommitAction(it) },
+            leftAction = left?.let { KeyAction.CommitAction(it) },
+            rightAction = right?.let { KeyAction.CommitAction(it) }
         )
     )
 )
