@@ -68,12 +68,12 @@ class TextKeyboard(
                 BackspaceKey()
             ),
             listOf(
-                LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, 0.13333f, KeyDef.Appearance.Variant.AltForeground),
+                TextPickerSwitchKey("!?#", PickerWindow.Key.Symbol)
+                LayoutSwitchKey("123", NumberKeyboard.Name),
                 LanguageKey(),
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
-                LayoutSwitchKey("123", NumberKeyboard.Name),
                 ReturnKey()
             )
         )
