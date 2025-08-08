@@ -192,7 +192,6 @@ abstract class BaseKeyboard(
                         else -> false
                     }
                 }
-            }
             } else if (def is BackspaceKey) {
                 swipeEnabled = true
                 swipeRepeatEnabled = true
