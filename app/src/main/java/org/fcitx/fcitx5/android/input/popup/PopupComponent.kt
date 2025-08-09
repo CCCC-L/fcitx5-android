@@ -112,7 +112,7 @@ class PopupComponent :
 //        } else {
 //            PopupPreset[keyboard.label] ?: EmojiModifier.produceSkinTones(keyboard.label) ?: return
 //        }
-        val keys =  arrayOf("!", "#", "$", "%", "^").toTypedArray()
+        val keys = arrayOf("!", "#", "$", "%", "^")
         // clear popup preview text         OR create empty popup preview
         showingEntryUi[viewId]?.setText("") ?: showPopup(viewId, "", bounds)
         reallyShowKeyboard(viewId, keys, bounds)
