@@ -25,14 +25,21 @@ import splitties.views.imageResource
 class TextKeyboard(
     context: Context,
     theme: Theme
-) : BaseKeyboard(context, theme, Layout) {
+) : BaseKeyboard(context, theme, getLayoutForOrientation(context)) {
 
     enum class CapsState { None, Once, Lock }
 
     companion object {
         const val Name = "Text"
 
-        val Layout: List<List<KeyDef>> = listOf(
+        private fun getLayoutForOrientation(context: Context): List<List<KeyDef>> {
+            return when (context.resources.configuration.orientation) {
+                Configuration.ORIENTATION_LANDSCAPE -> LandscapeLayout
+                else -> PortraitLayout
+            }
+        }
+
+        val PortraitLayout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "1", null, null, null),
                 MultiSwipeAlphabetKey("W", "2", "2", null, null, null),
@@ -75,6 +82,64 @@ class TextKeyboard(
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 ReturnKey(0.2f)
+            )
+        )
+
+        val LandscapeLayout: List<List<KeyDef>> = listOf(
+            listOf(
+                AlphabetKey("Q", "1"),
+                AlphabetKey("W", "2"),
+                AlphabetKey("E", "3"),
+                AlphabetKey("R", "4"),
+                AlphabetKey("T", "5"),
+                AlphabetKey("Y", "6"),
+                AlphabetKey("U", "7"),
+                AlphabetKey("I", "8"),
+                AlphabetKey("O", "9"),
+                AlphabetKey("P", "0"),
+                // 右侧数字键
+                NumPadKey("1", 0xffb1, 20f, 0.08f),
+                NumPadKey("2", 0xffb2, 20f, 0.08f),
+                NumPadKey("3", 0xffb3, 20f, 0.08f)
+            ),
+            listOf(
+                AlphabetKey("A", "@"),
+                AlphabetKey("S", "*"),
+                AlphabetKey("D", "+"),
+                AlphabetKey("F", "-"),
+                AlphabetKey("G", "="),
+                AlphabetKey("H", "/"),
+                AlphabetKey("J", "#"),
+                AlphabetKey("K", "("),
+                AlphabetKey("L", ")"),
+                // 右侧数字键
+                NumPadKey("4", 0xffb4, 20f, 0.08f),
+                NumPadKey("5", 0xffb5, 20f, 0.08f),
+                NumPadKey("6", 0xffb6, 20f, 0.08f)
+            ),
+            listOf(
+                CapsKey(),
+                AlphabetKey("Z", "'"),
+                AlphabetKey("X", ":"),
+                AlphabetKey("C", ";"),
+                AlphabetKey("V", "!"),
+                AlphabetKey("B", "?"),
+                AlphabetKey("N", "_"),
+                AlphabetKey("M", "\""),
+                BackspaceKey(),
+                // 右侧数字键
+                NumPadKey("7", 0xffb7, 20f, 0.08f),
+                NumPadKey("8", 0xffb8, 20f, 0.08f),
+                NumPadKey("9", 0xffb9, 20f, 0.08f)
+            ),
+            listOf(
+                LayoutSwitchKey("123", NumberKeyboard.Name),
+                CommaKey(),
+                SpaceKey(),
+                PeriodKey(),
+                ReturnKey(),
+                // 右侧数字键
+                NumPadKey("0", 0xffb0, 20f, 0.24f)
             )
         )
     }
