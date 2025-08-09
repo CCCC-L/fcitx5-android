@@ -68,7 +68,8 @@ class MultiSwipeAlphabetKey(
     val down: Any?,
     val left: Any?,
     val right: Any?,
-    variant: Variant = Variant.Normal
+    variant: Variant = Variant.Normal,
+    popup: Array<Popup>? = null
 ) : KeyDef(
     Appearance.AltText(
         displayText = character,
@@ -83,6 +84,13 @@ class MultiSwipeAlphabetKey(
             downAction = convertToKeyAction(down),
             leftAction = convertToKeyAction(left),
             rightAction = convertToKeyAction(right)
+        )
+    ),
+    popup ?: arrayOf(
+        Popup.AltPreview(character, altText),
+        Popup.Keyboard(
+            character,
+            arrayOf(up, down, left, right).filterNotNull().filterIsInstance<String>().toTypedArray()
         )
     )
 ) {
