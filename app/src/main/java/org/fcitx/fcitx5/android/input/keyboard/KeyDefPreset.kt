@@ -97,7 +97,6 @@ class MultiSwipeAlphabetKey(
     companion object {
         private fun convertToKeyAction(param: Any?): KeyAction? {
             return when (param) {
-                is String -> KeyAction.CommitAction(param)
                 is String ->
                     if (param.length == 1 && param[0] in '0'..'9')
                         KeyAction.FcitxKeyAction(param)
