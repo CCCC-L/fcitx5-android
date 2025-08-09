@@ -124,7 +124,7 @@ open class KeyDef(
 
         class AltPreview(content: String, val alternative: String) : Preview(content)
 
-        class Keyboard(val label: String, val symbols: Array<String> = arrayOf()) : Popup() {
+        class Keyboard(val label: String, symbols: Array<String> = arrayOf()) : Popup() {
             constructor(label: String) : this(label, symbols)
         }
 
