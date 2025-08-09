@@ -209,7 +209,7 @@ class PickerPageUi(
                         onPopupAction(
                             PopupAction.ShowKeyboardAction(
                                 view.id,
-                                KeyDef.Popup.Keyboard("A"),
+                                KeyDef.Popup.Keyboard(label),
                                 bounds
                             )
                         )

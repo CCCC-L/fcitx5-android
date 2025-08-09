@@ -74,7 +74,7 @@ class TextKeyboard(
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
-                ReturnKey()
+                ReturnKey(0.25f)
             )
         )
     }
@@ -190,7 +190,7 @@ class TextKeyboard(
             is PopupAction.ShowKeyboardAction -> {
                 val label = action.keyboard.label
                 if (label.length == 1 && label[0].isLetter())
-                    action.copy(keyboard = KeyDef.Popup.Keyboard(transformAlphabet(label)))
+                    action.copy(keyboard = KeyDef.Popup.Keyboard(transformAlphabet(label, action.keyboard.symbols)))
                 else action
             }
             else -> action
