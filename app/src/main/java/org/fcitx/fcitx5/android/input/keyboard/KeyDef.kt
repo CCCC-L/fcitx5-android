@@ -124,9 +124,7 @@ open class KeyDef(
 
         class AltPreview(content: String, val alternative: String) : Preview(content)
 
-        class Keyboard(val label: String, symbols: Array<String> = arrayOf()) : Popup() {
-            constructor(label: String) : this(label, symbols)
-        }
+        class Keyboard(val label: String, val symbols: Array<String> = arrayOf()) : Popup()
 
         class Menu(val items: Array<Item>) : Popup() {
             class Item(val label: String, @DrawableRes val icon: Int, val action: KeyAction)
