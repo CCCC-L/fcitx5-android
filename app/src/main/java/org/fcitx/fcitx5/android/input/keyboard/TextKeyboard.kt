@@ -34,16 +34,16 @@ class TextKeyboard(
 
         val Layout: List<List<KeyDef>> = listOf(
             listOf(
-                MultiSwipeAlphabetKey("Q", "1", "1", "!", "@", "#"),
-                MultiSwipeAlphabetKey("W", "2", "2", "''", "@", "#"),
-                MultiSwipeAlphabetKey("E", "3", "3", "\"\"", "@", "#"),
-                MultiSwipeAlphabetKey("R", "4", "4", "[]", "@", "#"),
-                MultiSwipeAlphabetKey("T", "5", "5", "{}", "@", "#"),
-                MultiSwipeAlphabetKey("Y", "6", "6", "()", "@", "#"),
-                MultiSwipeAlphabetKey("U", "7", "7", "``", "@", "#"),
-                MultiSwipeAlphabetKey("I", "8", "8", "<>", "@", "#"),
-                MultiSwipeAlphabetKey("O", "9", "9", "!", "@", "#"),
-                MultiSwipeAlphabetKey("P", "0", "0", "!", "@", "#")
+                MultiSwipeAlphabetKey("Q", "1", "1", null, null, null),
+                MultiSwipeAlphabetKey("W", "2", "2", null, null, null),
+                MultiSwipeAlphabetKey("E", "3", "3", null, null, null),
+                MultiSwipeAlphabetKey("R", "4", "4", null, null, null),
+                MultiSwipeAlphabetKey("T", "5", "5", null, null, null),
+                MultiSwipeAlphabetKey("Y", "6", "6", null, null, null),
+                MultiSwipeAlphabetKey("U", "7", "7", null, null, null),
+                MultiSwipeAlphabetKey("I", "8", "8", null, null, null),
+                MultiSwipeAlphabetKey("O", "9", "9", null, null, null),
+                MultiSwipeAlphabetKey("P", "0", "0", null, null, null)
             ),
             listOf(
                 MultiSwipeAlphabetKey("A", "\\", "\\", null, null, null),
@@ -74,7 +74,7 @@ class TextKeyboard(
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
-                ReturnKey(0.25f)
+                ReturnKey(0.2f)
             )
         )
     }
