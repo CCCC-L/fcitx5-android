@@ -90,7 +90,7 @@ class MultiSwipeAlphabetKey(
         Popup.AltPreview(character, altText),
         Popup.Keyboard(
             character,
-            arrayOf("!", "#", "$", "%", "^")
+            arrayOf(up, down, left, right).filterNotNull().filterIsInstance<String>().toTypedArray()
         )
     )
 ) {
