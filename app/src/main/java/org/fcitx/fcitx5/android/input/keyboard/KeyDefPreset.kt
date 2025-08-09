@@ -89,9 +89,8 @@ class MultiSwipeAlphabetKey(
     popup ?: arrayOf(
         Popup.AltPreview(character, altText),
         Popup.Keyboard(
-            character,
-//            arrayOf(up, down, left, right).filterNotNull().filterIsInstance<String>().toTypedArray()
-            arrayOf("4", "5", "6")
+            label = character,
+            symbols = arrayOf("4", "5", "5")
         )
     )
 ) {
