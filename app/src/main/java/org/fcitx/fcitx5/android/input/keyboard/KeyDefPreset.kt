@@ -90,7 +90,8 @@ class MultiSwipeAlphabetKey(
         Popup.AltPreview(character, altText),
         Popup.Keyboard(
             character,
-            arrayOf(up, down, left, right).filterNotNull().filterIsInstance<String>().toTypedArray()
+//            arrayOf(up, down, left, right).filterNotNull().filterIsInstance<String>().toTypedArray()
+            arrayOf("4", "5", "6")
         )
     )
 ) {
@@ -98,6 +99,11 @@ class MultiSwipeAlphabetKey(
         private fun convertToKeyAction(param: Any?): KeyAction? {
             return when (param) {
                 is String -> KeyAction.CommitAction(param)
+                is String ->
+                    if (param.length == 1 && param[0] in '0'..'9')
+                        KeyAction.FcitxKeyAction(param)
+                    else
+                        KeyAction.CommitAction(param)
                 is KeyAction -> param
                 null -> null
                 else -> throw IllegalArgumentException("Parameter must be String or KeyAction")
