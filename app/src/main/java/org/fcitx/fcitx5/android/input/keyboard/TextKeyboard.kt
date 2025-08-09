@@ -190,7 +190,7 @@ class TextKeyboard(
             is PopupAction.ShowKeyboardAction -> {
                 val label = action.keyboard.label
                 if (label.length == 1 && label[0].isLetter())
-                    action.copy(keyboard = KeyDef.Popup.Keyboard(transformAlphabet(label, action.keyboard.symbols)))
+                    action.copy(keyboard = KeyDef.Popup.Keyboard(transformAlphabet(label), action.keyboard.symbols))
                 else action
             }
             else -> action
