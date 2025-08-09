@@ -107,11 +107,12 @@ class PopupComponent :
     }
 
     private fun showKeyboard(viewId: Int, keyboard: KeyDef.Popup.Keyboard, bounds: Rect) {
-        val keys = if (keyboard.symbols.isNotEmpty()) {
-            keyboard.symbols
-        } else {
-            PopupPreset[keyboard.label] ?: EmojiModifier.produceSkinTones(keyboard.label) ?: return
-        }
+//        val keys = if (keyboard.symbols.isNotEmpty()) {
+//            keyboard.symbols
+//        } else {
+//            PopupPreset[keyboard.label] ?: EmojiModifier.produceSkinTones(keyboard.label) ?: return
+//        }
+        val keys =  arrayOf("!", "#", "$", "%", "^").toTypedArray()
         // clear popup preview text         OR create empty popup preview
         showingEntryUi[viewId]?.setText("") ?: showPopup(viewId, "", bounds)
         reallyShowKeyboard(viewId, keys, bounds)
