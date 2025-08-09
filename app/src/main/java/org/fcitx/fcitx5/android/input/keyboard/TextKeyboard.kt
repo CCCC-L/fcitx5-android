@@ -32,13 +32,6 @@ class TextKeyboard(
     companion object {
         const val Name = "Text"
 
-        private fun getLayoutForOrientation(context: Context): List<List<KeyDef>> {
-            return when (context.resources.configuration.orientation) {
-                Configuration.ORIENTATION_LANDSCAPE -> LandscapeLayout
-                else -> PortraitLayout
-            }
-        }
-
         val PortraitLayout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "1", null, null, null),
@@ -142,6 +135,13 @@ class TextKeyboard(
                 NumPadKey("0", 0xffb0, 20f, 0.24f)
             )
         )
+
+        private fun getLayoutForOrientation(context: Context): List<List<KeyDef>> {
+            return when (context.resources.configuration.orientation) {
+                Configuration.ORIENTATION_LANDSCAPE -> LandscapeLayout
+                else -> PortraitLayout
+            }
+        }
     }
 
     val caps: ImageKeyView by lazy { findViewById(R.id.button_caps) }
