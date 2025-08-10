@@ -89,11 +89,14 @@ class TextKeyboard(
 
         val LandscapeLayout: List<List<KeyDef>> = listOf(
             listOf(
-                MultiSwipeAlphabetKey("2", "1", "1", null, null, null),
-                MultiSwipeAlphabetKey("2", "2", "2", null, null, null),
+                MultiSwipeAlphabetKey("Q", "1", "1", null, null, null),
+                MultiSwipeAlphabetKey("W", "2", "2", null, null, null),
                 MultiSwipeAlphabetKey("E", "3", "3", null, null, null),
                 MultiSwipeAlphabetKey("R", "4", "4", null, null, null),
                 MultiSwipeAlphabetKey("T", "5", "5", null, null, null),
+                SymbolKey("1", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("2", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("3", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("Y", "6", "6", null, null, null),
                 MultiSwipeAlphabetKey("U", "7", "7", null, null, null),
                 MultiSwipeAlphabetKey("I", "8", "8", null, null, null),
@@ -106,6 +109,9 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("D", "!  =", "!=", null, "!", "="),
                 MultiSwipeAlphabetKey("F", "&  |", "&&", "||", "&", "|"),
                 MultiSwipeAlphabetKey("G", "^  ~", null, null, "^", "~"),
+                SymbolKey("4", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("5", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("6", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("H", "<  >", "<>", null, "<", ">"),
                 MultiSwipeAlphabetKey("J", "[  ]", "[]", null, "[", "]"),
                 MultiSwipeAlphabetKey("K", "{  }", "{}", null, "{", "}"),
@@ -118,17 +124,21 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%"),
                 MultiSwipeAlphabetKey("V", ":  `", KeyAction.PasteAction, null, ":", "`"),
                 MultiSwipeAlphabetKey("B", ";", ";", null, null, null),
+                SymbolKey("7", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("8", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("9", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")"),
                 MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'"),
                 BackspaceKey()
             ),
             listOf(
+                SpaceKey(),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
-                LayoutSwitchKey("123", NumberKeyboard.Name),
                 LanguageKey(),
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
-                SpaceKey(),
+                SymbolKey("0", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SpaceKey(),
                 ReturnKey(0.2f)
             )
         )
