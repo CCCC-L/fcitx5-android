@@ -6,6 +6,7 @@ package org.fcitx.fcitx5.android.input.keyboard
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Configuration
 import android.view.View
 import androidx.annotation.Keep
 import androidx.core.view.allViews
@@ -25,17 +26,71 @@ import splitties.views.imageResource
 class TextKeyboard(
     context: Context,
     theme: Theme
-) : BaseKeyboard(context, theme, Layout) {
+) : BaseKeyboard(context, theme, getLayoutForOrientation(context)) {
 
     enum class CapsState { None, Once, Lock }
 
     companion object {
         const val Name = "Text"
 
-        val Layout: List<List<KeyDef>> = listOf(
+        private fun getLayoutForOrientation(context: Context): List<List<KeyDef>> {
+            return if (context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                LandscapeLayout
+            } else {
+                PortraitLayout
+            }
+        }
+
+        val PortraitLayout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "1", null, null, null),
                 MultiSwipeAlphabetKey("W", "2", "2", null, null, null),
+                MultiSwipeAlphabetKey("E", "3", "3", null, null, null),
+                MultiSwipeAlphabetKey("R", "4", "4", null, null, null),
+                MultiSwipeAlphabetKey("T", "5", "5", null, null, null),
+                MultiSwipeAlphabetKey("Y", "6", "6", null, null, null),
+                MultiSwipeAlphabetKey("U", "7", "7", null, null, null),
+                MultiSwipeAlphabetKey("I", "8", "8", null, null, null),
+                MultiSwipeAlphabetKey("O", "9", "9", null, null, null),
+                MultiSwipeAlphabetKey("P", "0", "0", null, null, null)
+            ),
+            listOf(
+                MultiSwipeAlphabetKey("A", "\\", "\\", null, null, null),
+                MultiSwipeAlphabetKey("S", "*  /", "//", null, "*", "/"),
+                MultiSwipeAlphabetKey("D", "!  =", "!=", null, "!", "="),
+                MultiSwipeAlphabetKey("F", "&  |", "&&", "||", "&", "|"),
+                MultiSwipeAlphabetKey("G", "^  ~", null, null, "^", "~"),
+                MultiSwipeAlphabetKey("H", "<  >", "<>", null, "<", ">"),
+                MultiSwipeAlphabetKey("J", "[  ]", "[]", null, "[", "]"),
+                MultiSwipeAlphabetKey("K", "{  }", "{}", null, "{", "}"),
+                MultiSwipeAlphabetKey("L", "?", "?", null, null, null)
+            ),
+            listOf(
+                CapsKey(),
+                MultiSwipeAlphabetKey("Z", "+  -", KeyAction.SelectAllAction, null, "+", "-"),
+                MultiSwipeAlphabetKey("X", "@  #", KeyAction.CutAction, null, "@", "#"),
+                MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%"),
+                MultiSwipeAlphabetKey("V", ":  `", KeyAction.PasteAction, null, ":", "`"),
+                MultiSwipeAlphabetKey("B", ";", ";", null, null, null),
+                MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")"),
+                MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'"),
+                BackspaceKey()
+            ),
+            listOf(
+                LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
+                LayoutSwitchKey("123", NumberKeyboard.Name),
+                LanguageKey(),
+                CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
+                SpaceKey(),
+                SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                ReturnKey(0.2f)
+            )
+        )
+
+        val LandscapeLayout: List<List<KeyDef>> = listOf(
+            listOf(
+                MultiSwipeAlphabetKey("2", "1", "1", null, null, null),
+                MultiSwipeAlphabetKey("2", "2", "2", null, null, null),
                 MultiSwipeAlphabetKey("E", "3", "3", null, null, null),
                 MultiSwipeAlphabetKey("R", "4", "4", null, null, null),
                 MultiSwipeAlphabetKey("T", "5", "5", null, null, null),
