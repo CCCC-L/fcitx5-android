@@ -91,7 +91,7 @@ class PopupKeyboardUi(
 
     init {
         val keyCount: Float = keys.size.toFloat()
-        rowCount = ceil(keyCount / 5).toInt()
+        rowCount = 1
         columnCount = (keyCount / rowCount).roundToInt()
 
         focusRow = 0
