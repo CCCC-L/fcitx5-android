@@ -95,6 +95,9 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("E", "3", "3", null, null, null, landscapePercentWidth),
                 MultiSwipeAlphabetKey("R", "4", "4", null, null, null, landscapePercentWidth),
                 MultiSwipeAlphabetKey("T", "5", "5", null, null, null, landscapePercentWidth),
+                SymbolKey("1", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("2", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey("3", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("Y", "6", "6", null, null, null, landscapePercentWidth),
                 MultiSwipeAlphabetKey("U", "7", "7", null, null, null, landscapePercentWidth),
                 MultiSwipeAlphabetKey("I", "8", "8", null, null, null, landscapePercentWidth),
@@ -130,7 +133,7 @@ class TextKeyboard(
                 BackspaceKey(0.155f)
             ),
             listOf(
-                SpaceKey(0.24625f),
+                SpaceKey(0.26f),
                 CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
                 SymbolKey("=", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
