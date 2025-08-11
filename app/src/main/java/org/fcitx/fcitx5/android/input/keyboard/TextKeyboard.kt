@@ -133,7 +133,7 @@ class TextKeyboard(
                 BackspaceKey(0.155f)
             ),
             listOf(
-                SpaceKey(0.24625f),
+                SpaceKey(0.27f),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
                 CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("=", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
