@@ -87,7 +87,7 @@ class TextKeyboard(
             )
         )
 
-        val landscapePercentWidth = 0.077f
+        val landscapePercentWidth = 0.078f
         val LandscapeLayout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "1", null, null, null, landscapePercentWidth),
@@ -133,13 +133,13 @@ class TextKeyboard(
                 BackspaceKey()
             ),
             listOf(
-                LanguageKey(),
-                SpaceKey(0.25f),
+                SpaceKey(0.2f),
                 CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
                 SymbolKey("0", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
-                SpaceKey(0.25f),
+                SpaceKey(0.2f),
+                LanguageKey(),
                 ReturnKey(landscapePercentWidth)
             )
         )
