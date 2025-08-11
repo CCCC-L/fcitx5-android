@@ -87,7 +87,7 @@ class TextKeyboard(
             )
         )
 
-        val landscapePercentWidth = 0.0775f
+        val landscapePercentWidth = 0.0765f
         val LandscapeLayout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "1", null, null, null, landscapePercentWidth),
