@@ -221,6 +221,18 @@ abstract class BaseKeyboard(
                         else -> false
                     }
                 }
+            } else if (def is ReturnKey) {
+                swipeRepeatEnabled = true
+                swipeThresholdX = disabledSwipeThreshold
+                swipeThresholdY = selectionSwipeThreshold
+
+                onGestureListener = OnGestureListener { view, event ->
+                    when (event.type) {
+                        GestureType.Up -> {
+                            onAction(KeyAction.HideKeyboardAction)
+                        }
+                    }
+                }
             }
             def.behaviors.forEach {
                 when (it) {
