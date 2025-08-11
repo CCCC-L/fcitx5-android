@@ -48,4 +48,6 @@ sealed class KeyAction {
     data object CopyAction : KeyAction()
 
     data object PasteAction : KeyAction()
+
+    data object HideKeyboardAction : KeyAction()
 }
