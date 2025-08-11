@@ -130,17 +130,17 @@ class TextKeyboard(
                 SymbolKey("9", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")", landscapePercentWidth),
                 MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'", landscapePercentWidth),
-                BackspaceKey(0.125f)
+                BackspaceKey(0.13f)
             ),
             listOf(
-                SpaceKey(0.275f),
+                SpaceKey(0.3f),
                 CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
                 SymbolKey("0", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(0.275f),
                 LanguageKey(),
-                ReturnKey(landscapePercentWidth)
+                ReturnKey(0.125f)
             )
         )
     }
