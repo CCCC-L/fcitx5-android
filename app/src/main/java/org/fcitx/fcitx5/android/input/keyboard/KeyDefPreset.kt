@@ -144,11 +144,11 @@ class AlphabetDigitKey(
     )
 }
 
-class CapsKey : KeyDef(
+class CapsKey(percentWidth: Float = 0.1f) : KeyDef(
     Appearance.Image(
         src = R.drawable.ic_capslock_none,
         viewId = R.id.button_caps,
-        percentWidth = 0.1f,
+        percentWidth = percentWidth,
         variant = Variant.Alternative
     ),
     setOf(

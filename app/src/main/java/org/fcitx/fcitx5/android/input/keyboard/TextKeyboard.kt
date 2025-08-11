@@ -87,7 +87,7 @@ class TextKeyboard(
             )
         )
 
-        val landscapePercentWidth = 0.078f
+        val landscapePercentWidth = 0.0775f
         val LandscapeLayout: List<List<KeyDef>> = listOf(
             listOf(
                 MultiSwipeAlphabetKey("Q", "1", "1", null, null, null, landscapePercentWidth),
@@ -119,7 +119,7 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("L", "?", "?", null, null, null)
             ),
             listOf(
-                CapsKey(),
+                CapsKey(landscapePercentWidth),
                 MultiSwipeAlphabetKey("Z", "+  -", KeyAction.SelectAllAction, null, "+", "-", landscapePercentWidth),
                 MultiSwipeAlphabetKey("X", "@  #", KeyAction.CutAction, null, "@", "#", landscapePercentWidth),
                 MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%", landscapePercentWidth),
@@ -130,15 +130,15 @@ class TextKeyboard(
                 SymbolKey("9", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")", landscapePercentWidth),
                 MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'", landscapePercentWidth),
-                BackspaceKey()
+                BackspaceKey(0.1f)
             ),
             listOf(
-                SpaceKey(0.2f),
+                SpaceKey(0.25f),
                 CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
                 SymbolKey("0", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
-                SpaceKey(0.2f),
+                SpaceKey(0.25f),
                 LanguageKey(),
                 ReturnKey(landscapePercentWidth)
             )
