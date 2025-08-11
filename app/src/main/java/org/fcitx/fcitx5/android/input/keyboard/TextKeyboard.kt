@@ -138,7 +138,7 @@ class TextKeyboard(
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("0", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
-                SpaceKey(0.02f),
+                SpaceKey(),
                 ReturnKey(0.01f)
             )
         )
