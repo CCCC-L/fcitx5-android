@@ -253,11 +253,11 @@ class LanguageKey : KeyDef(
     )
 )
 
-class SpaceKey : KeyDef(
+class SpaceKey(percentWidth: Float = 0f) : KeyDef(
     Appearance.Text(
         displayText = " ",
         textSize = 13.5f,
-        percentWidth = 0f,
+        percentWidth = percentWidth,
         border = Border.Special,
         viewId = R.id.button_space,
         soundEffect = InputFeedbacks.SoundEffect.SpaceBar

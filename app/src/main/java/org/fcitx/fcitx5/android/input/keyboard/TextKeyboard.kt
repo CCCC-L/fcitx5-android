@@ -132,14 +132,14 @@ class TextKeyboard(
                 BackspaceKey()
             ),
             listOf(
-                SpaceKey(),
+                SpaceKey(0.5f),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
                 LanguageKey(),
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("0", 0.1f, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
-                SpaceKey(),
-                ReturnKey(0.01f)
+                SpaceKey(0.5f),
+                ReturnKey(0.1f)
             )
         )
     }
