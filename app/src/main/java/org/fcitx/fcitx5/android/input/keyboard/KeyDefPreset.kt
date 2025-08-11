@@ -68,6 +68,7 @@ class MultiSwipeAlphabetKey(
     val down: Any?,
     val left: Any?,
     val right: Any?,
+    percentWidth: Float = 0.1f,
     variant: Variant = Variant.Normal,
     popup: Array<Popup>? = null
 ) : KeyDef(
@@ -75,7 +76,8 @@ class MultiSwipeAlphabetKey(
         displayText = character,
         textSize = 23f,
         variant = variant,
-        altText = altText
+        altText = altText,
+        percentWidth = percentWidth
     ),
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(character)),
