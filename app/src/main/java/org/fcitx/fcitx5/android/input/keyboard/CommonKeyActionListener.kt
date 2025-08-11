@@ -36,6 +36,7 @@ import org.fcitx.fcitx5.android.input.keyboard.KeyAction.SelectAllAction
 import org.fcitx.fcitx5.android.input.keyboard.KeyAction.CutAction
 import org.fcitx.fcitx5.android.input.keyboard.KeyAction.CopyAction
 import org.fcitx.fcitx5.android.input.keyboard.KeyAction.PasteAction
+import org.fcitx.fcitx5.android.input.keyboard.KeyAction.HideKeyboardAction
 import org.fcitx.fcitx5.android.input.picker.PickerWindow
 import org.fcitx.fcitx5.android.input.wm.InputWindowManager
 import org.fcitx.fcitx5.android.utils.switchToNextIME
