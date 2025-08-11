@@ -116,7 +116,7 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("H", "<  >", "<>", null, "<", ">", landscapePercentWidth),
                 MultiSwipeAlphabetKey("J", "[  ]", "[]", null, "[", "]", landscapePercentWidth),
                 MultiSwipeAlphabetKey("K", "{  }", "{}", null, "{", "}", landscapePercentWidth),
-                MultiSwipeAlphabetKey("L", "?", "?", null, null, null)
+                MultiSwipeAlphabetKey("L", "?", "?", null, null, null, landscapePercentWidth)
             ),
             listOf(
                 CapsKey(landscapePercentWidth),
