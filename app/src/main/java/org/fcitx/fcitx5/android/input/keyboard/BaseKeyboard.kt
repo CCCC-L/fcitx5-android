@@ -229,8 +229,12 @@ abstract class BaseKeyboard(
                 onGestureListener = OnGestureListener { view, event ->
                     when (event.type) {
                         GestureType.Up -> {
-                            onAction(KeyAction.HideKeyboardAction)
+                            if (!event.consumed && event.totalY < 0) { // 上滑
+                                onAction(KeyAction.HideKeyboardAction)
+                                true
+                            } else false
                         }
+                        else -> false
                     }
                 }
             }

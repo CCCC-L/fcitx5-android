@@ -205,7 +205,7 @@ class CommonKeyActionListener :
                     service.currentInputConnection?.performContextMenuAction(android.R.id.paste)
                 }
                 is HideKeyboardAction -> {
-                    service.requestHideSelf(0)
+                    service.currentInputConnection?.performContextMenuAction(android.R.id.paste)
                 }
                 else -> {}
             }
