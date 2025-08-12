@@ -116,7 +116,7 @@ class HorizontalCandidateComponent :
     val layoutManager: FlexboxLayoutManager by lazy {
         object : FlexboxLayoutManager(context) {
             override fun canScrollVertically() = false
-            override fun canScrollHorizontally() = false
+            override fun canScrollHorizontally() = true
             override fun onLayoutCompleted(state: RecyclerView.State) {
                 super.onLayoutCompleted(state)
                 val cnt = this.childCount
