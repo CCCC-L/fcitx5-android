@@ -170,10 +170,6 @@ class HorizontalCandidateComponent :
             adapter = this@HorizontalCandidateComponent.adapter
             layoutManager = this@HorizontalCandidateComponent.layoutManager
             addItemDecoration(FlexboxVerticalDecoration(dividerDrawable))
-            // 增加视图缓存以支持更多候选词渲染
-            setItemViewCacheSize(16)
-            // 设置预加载距离
-            setItemPrefetchEnabled(true)
         }
     }
 
