@@ -70,7 +70,7 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("Z", "+  -", KeyAction.SelectAllAction, null, "+", "-"),
                 MultiSwipeAlphabetKey("X", "@  #", KeyAction.CutAction, null, "@", "#"),
                 MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%"),
-                MultiSwipeAlphabetKey("V", "`  :", KeyAction.PasteAction, null, "`", ":"),
+                MultiSwipeAlphabetKey("V", ":", KeyAction.PasteAction, null, ":", ":"),
                 MultiSwipeAlphabetKey("B", ";", ";", null, null, null),
                 MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")"),
                 MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'"),
@@ -80,9 +80,9 @@ class TextKeyboard(
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
                 LayoutSwitchKey("123", NumberKeyboard.Name),
                 LanguageKey(),
-                CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey(",", 0.1f, KeyDef.Appearance.Variant.Alternative, "_"),
                 SpaceKey(),
-                SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative. "`"),
                 ReturnKey(0.2f)
             )
         )
@@ -123,7 +123,7 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("Z", "+  -", KeyAction.SelectAllAction, null, "+", "-", landscapePercentWidth),
                 MultiSwipeAlphabetKey("X", "@  #", KeyAction.CutAction, null, "@", "#", landscapePercentWidth),
                 MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%", landscapePercentWidth),
-                MultiSwipeAlphabetKey("V", "`  :", KeyAction.PasteAction, null, "`", ":", landscapePercentWidth),
+                MultiSwipeAlphabetKey("V", ":", KeyAction.PasteAction, null, ":", ":", landscapePercentWidth),
                 MultiSwipeAlphabetKey("B", ";", ";", null, null, null, landscapePercentWidth),
                 MultiSwipeAlphabetKey("7", "", null, null, null, null, landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 MultiSwipeAlphabetKey("8", "", null, null, null, null, landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
@@ -135,10 +135,10 @@ class TextKeyboard(
             listOf(
                 SpaceKey(0.27f),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
-                CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey(",", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "_"),
                 SymbolKey("=", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("0", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
-                SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "`"),
                 SpaceKey(0.24625f),
                 LanguageKey(),
                 ReturnKey(0.1f)
