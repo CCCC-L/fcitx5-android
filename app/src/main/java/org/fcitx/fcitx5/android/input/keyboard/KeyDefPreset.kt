@@ -34,13 +34,6 @@ class SymbolKey(
     ),
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(symbol)),
-        Behavior.MultiDirectionSwipe(
-            upAction = upSymbol?.let { KeyAction.FcitxKeyAction(it) },
-            downAction = null,
-            leftAction = null,
-            rightAction = null
-        )
-
     ),
     popup ?: arrayOf(
         Popup.Preview(symbol),
