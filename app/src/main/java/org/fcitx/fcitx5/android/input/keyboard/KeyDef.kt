@@ -108,10 +108,10 @@ open class KeyDef(
         ) : Behavior()
 
         class MultiDirectionSwipe(
-            val upAction: KeyAction?,
-            val downAction: KeyAction?,
-            val leftAction: KeyAction?,
-            val rightAction: KeyAction?,
+            val upAction: KeyAction? = null,
+            val downAction: KeyAction? = null,
+            val leftAction: KeyAction? = null,
+            val rightAction: KeyAction? = null,
         ) : Behavior()
 
         class DoubleTap(
