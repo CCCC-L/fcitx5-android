@@ -27,6 +27,7 @@ class SymbolKey(
 ) : KeyDef(
     Appearance.AltText(
         displayText = symbol,
+        altText = "",
         textSize = 23f,
         percentWidth = percentWidth,
         variant = variant
