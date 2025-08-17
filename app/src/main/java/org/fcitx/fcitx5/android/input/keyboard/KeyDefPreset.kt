@@ -27,14 +27,20 @@ class SymbolKey(
 ) : KeyDef(
     Appearance.AltText(
         displayText = symbol,
-        altText = upSymbol ?: "",
+        altText = upSymbol ? "",
         textSize = 23f,
         percentWidth = percentWidth,
         variant = variant
     ),
     setOf(
         Behavior.Press(KeyAction.FcitxKeyAction(symbol)),
-        Behavior.MultiDirectionSwipe(upSymbol?.let { KeyAction.FcitxKeyAction(it) })
+        Behavior.MultiDirectionSwipe(
+            upAction = upSymbol?.let { KeyAction.FcitxKeyAction(it) },
+            downAction = null,
+            leftAction = null,
+            rightAction = null
+        )
+
     ),
     popup ?: arrayOf(
         Popup.Preview(symbol),
