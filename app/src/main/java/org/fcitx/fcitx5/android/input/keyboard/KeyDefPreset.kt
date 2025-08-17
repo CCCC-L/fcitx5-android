@@ -22,7 +22,6 @@ class SymbolKey(
     val symbol: String,
     percentWidth: Float = 0.1f,
     variant: Variant = Variant.Normal,
-    val upSymbol: String = null,
     popup: Array<Popup>? = null
 ) : KeyDef(
     Appearance.AltText(
