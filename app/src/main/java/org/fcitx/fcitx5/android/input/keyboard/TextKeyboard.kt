@@ -80,9 +80,9 @@ class TextKeyboard(
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
                 LayoutSwitchKey("123", NumberKeyboard.Name),
                 LanguageKey(),
-                SymbolKey(",", 0.1f, KeyDef.Appearance.Variant.Alternative, "_"),
+                CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
                 SpaceKey(),
-                SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative. "`"),
+                SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative, "_"),
                 ReturnKey(0.2f)
             )
         )
@@ -135,10 +135,10 @@ class TextKeyboard(
             listOf(
                 SpaceKey(0.27f),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
-                SymbolKey(",", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "_"),
+                CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("=", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("0", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
-                SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "`"),
+                SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "_"),
                 SpaceKey(0.24625f),
                 LanguageKey(),
                 ReturnKey(0.1f)
