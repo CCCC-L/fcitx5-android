@@ -135,7 +135,7 @@ class TextKeyboard(
             listOf(
                 SpaceKey(0.27f),
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name, landscapePercentWidth),
-                CommaKey(landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
+                SymbolKey(",", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "`"),
                 SymbolKey("=", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey("0", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative),
                 SymbolKey(".", landscapePercentWidth, KeyDef.Appearance.Variant.Alternative, "_"),
