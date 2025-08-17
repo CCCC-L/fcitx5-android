@@ -22,7 +22,6 @@ class SymbolKey(
     val symbol: String,
     percentWidth: Float = 0.1f,
     variant: Variant = Variant.Normal,
-    upSymbol: String = null,
     popup: Array<Popup>? = null
 ) : KeyDef(
     Appearance.Text(
@@ -30,13 +29,9 @@ class SymbolKey(
         textSize = 23f,
         percentWidth = percentWidth,
         variant = variant
-    )
+    ),
     setOf(
-        Behavior.Press(KeyAction.FcitxKeyAction(symbol)),
-        Behavior.MultiDirectionSwipe(
-            upAction = upSymbol?.let { KeyAction.FcitxKeyAction(it) },
-        )
-
+        Behavior.Press(KeyAction.FcitxKeyAction(symbol))
     ),
     popup ?: arrayOf(
         Popup.Preview(symbol),
