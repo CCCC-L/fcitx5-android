@@ -175,7 +175,7 @@ class HorizontalCandidateComponent :
         val maxSpanCount = maxSpanCountPref.getValue()
         when (fillStyle) {
             NeverFillWidth -> {
-                layoutMinWidth = 0
+                layoutMinWidth = view.width / 10 - dividerDrawable.intrinsicWidth
                 layoutFlexGrow = 0f
                 secondLayoutPassNeeded = false
             }
