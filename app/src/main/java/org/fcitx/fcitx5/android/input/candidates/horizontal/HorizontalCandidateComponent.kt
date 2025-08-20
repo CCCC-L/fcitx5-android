@@ -154,13 +154,6 @@ class HorizontalCandidateComponent :
 
     override val view by lazy {
         object : RecyclerView(context) {
-            override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-                super.onSizeChanged(w, h, oldw, oldh)
-                if (fillStyle == AutoFillWidth) {
-                    val maxSpanCount = maxSpanCountPref.getValue()
-                    layoutMinWidth = 0
-                }
-            }
         }.apply {
             id = R.id.candidate_view
             adapter = this@HorizontalCandidateComponent.adapter
@@ -175,7 +168,7 @@ class HorizontalCandidateComponent :
         val maxSpanCount = maxSpanCountPref.getValue()
         when (fillStyle) {
             NeverFillWidth -> {
-                layoutMinWidth = view.width / 10 - dividerDrawable.intrinsicWidth
+                layoutMinWidth = 0
                 layoutFlexGrow = 0f
                 secondLayoutPassNeeded = false
             }
