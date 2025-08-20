@@ -55,28 +55,6 @@ class HorizontalCandidateComponent :
     private val theme by manager.theme()
     private val bar: KawaiiBarComponent by manager.must()
 
-    private val fillStyle by AppPrefs.getInstance().keyboard.horizontalCandidateStyle
-    private val maxSpanCountPref by lazy {
-        AppPrefs.getInstance().keyboard.run {
-            if (context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
-                expandedCandidateGridSpanCount
-            else
-                expandedCandidateGridSpanCountLandscape
-        }
-    }
-
-    private var layoutMinWidth = 0
-    private var layoutFlexGrow = 1f
-
-    /**
-     * (for [HorizontalCandidateMode.AutoFillWidth] only)
-     * Second layout pass is needed when:
-     * [^1] total candidates count < maxSpanCount && [^2] RecyclerView cannot display all of them
-     * In that case, displayed candidates should be stretched evenly (by setting flexGrow to 1.0f).
-     */
-    private var secondLayoutPassNeeded = false
-    private var secondLayoutPassDone = false
-
     // Since expanded candidate window is created once the expand button was clicked,
     // we need to replay the last offset
     private val _expandedCandidateOffset = MutableSharedFlow<Int>(
@@ -98,10 +76,7 @@ class HorizontalCandidateComponent :
         object : HorizontalCandidateViewAdapter(theme) {
             override fun onBindViewHolder(holder: CandidateViewHolder, position: Int) {
                 super.onBindViewHolder(holder, position)
-                holder.itemView.updateLayoutParams<FlexboxLayoutManager.LayoutParams> {
-                    minWidth = layoutMinWidth
-                    flexGrow = layoutFlexGrow
-                }
+                // MODIFIED: 移除了 updateLayoutParams 的逻辑，让 ViewHolder 自适应宽度
                 holder.itemView.setOnClickListener {
                     fcitx.launchOnReady { it.select(holder.idx) }
                 }
@@ -115,31 +90,19 @@ class HorizontalCandidateComponent :
 
     val layoutManager: FlexboxLayoutManager by lazy {
         object : FlexboxLayoutManager(context) {
-            override fun canScrollVertically() = false
+            // MODIFIED: 允许水平滚动
             override fun canScrollHorizontally() = true
+            override fun canScrollVertically() = false
+
             override fun onLayoutCompleted(state: RecyclerView.State) {
                 super.onLayoutCompleted(state)
-                val cnt = this.childCount
-                if (secondLayoutPassNeeded) {
-                    if (cnt < adapter.candidates.size) {
-                        // [^2] RecyclerView can't display all candidates
-                        // update LayoutParams in onLayoutCompleted would trigger another
-                        // onLayoutCompleted, skip the second one to avoid infinite loop
-                        if (secondLayoutPassDone) return
-                        secondLayoutPassDone = true
-                        for (i in 0 until cnt) {
-                            getChildAt(i)!!.updateLayoutParams<LayoutParams> {
-                                flexGrow = 1f
-                            }
-                        }
-                    } else {
-                        secondLayoutPassNeeded = false
-                    }
-                }
-                refreshExpanded(cnt)
+                // MODIFIED: 移除了 secondLayoutPassNeeded 的复杂逻辑
+                refreshExpanded(this.childCount)
             }
-            // no need to override `generate{,Default}LayoutParams`, because HorizontalCandidateViewAdapter
-            // guarantees ViewHolder's layoutParams to be `FlexboxLayoutManager.LayoutParams`
+        }.apply {
+            // ADDED: 确保所有候选项在同一行，不换行
+            flexDirection = FlexDirection.ROW
+            flexWrap = FlexWrap.NOWRAP
         }
     }
 
@@ -153,39 +116,25 @@ class HorizontalCandidateComponent :
     }
 
     override val view by lazy {
-        object : RecyclerView(context) {
-        }.apply {
+        // MODIFIED: 移除了 onSizeChanged 回调
+        RecyclerView(context).apply {
             id = R.id.candidate_view
             adapter = this@HorizontalCandidateComponent.adapter
             layoutManager = this@HorizontalCandidateComponent.layoutManager
             addItemDecoration(FlexboxVerticalDecoration(dividerDrawable))
+            // ADDED: 隐藏水平滚动条，UI更美观
+            isHorizontalScrollBarEnabled = false
         }
     }
 
     override fun onCandidateUpdate(data: FcitxEvent.CandidateListEvent.Data) {
         val candidates = data.candidates
         val total = data.total
-        val maxSpanCount = maxSpanCountPref.getValue()
-        when (fillStyle) {
-            NeverFillWidth -> {
-                layoutMinWidth = 0
-                layoutFlexGrow = 0f
-                secondLayoutPassNeeded = false
-            }
-            AutoFillWidth -> {
-                layoutMinWidth = view.width / maxSpanCount - dividerDrawable.intrinsicWidth
-                layoutFlexGrow = if (candidates.size < maxSpanCount) 0f else 1f
-                // [^1] total candidates count < maxSpanCount
-                secondLayoutPassNeeded = candidates.size < maxSpanCount
-                secondLayoutPassDone = false
-            }
-            AlwaysFillWidth -> {
-                layoutMinWidth = 0
-                layoutFlexGrow = 1f
-                secondLayoutPassNeeded = false
-            }
-        }
+
+        // MODIFIED: 移除了所有与 fillStyle, maxSpanCount, minWidth, flexGrow 相关的逻辑
+        // 现在逻辑非常简单，直接更新 adapter 即可
         adapter.updateCandidates(candidates, total)
+
         // not sure why empty candidates won't trigger `FlexboxLayoutManager#onLayoutCompleted()`
         if (candidates.isEmpty()) {
             refreshExpanded(0)
