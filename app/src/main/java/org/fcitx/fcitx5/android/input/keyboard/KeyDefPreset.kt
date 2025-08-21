@@ -166,7 +166,8 @@ class LayoutSwitchKey(
     displayText: String,
     val to: String = "",
     percentWidth: Float = 0.1f,
-    variant: Variant = Variant.Alternative
+    variant: Variant = Variant.Alternative,
+
 ) : KeyDef(
     Appearance.Text(
         displayText,
@@ -290,7 +291,7 @@ class ReturnKey(percentWidth: Float = 0.15f) : KeyDef(
         Popup.Menu(
             arrayOf(
                 Popup.Menu.Item(
-                    "Emoji", R.drawable.ic_baseline_tag_faces_24, KeyAction.PickerSwitchAction()
+                    "Enter", R.drawable.ic_baseline_tag_faces_24, KeyAction.CommitAction("\n")
                 )
             )
         )
