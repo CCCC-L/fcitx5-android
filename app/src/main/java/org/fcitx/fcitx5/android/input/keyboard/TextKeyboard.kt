@@ -66,7 +66,7 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("L", "?", "?", null, null, null)
             ),
             listOf(
-                CapsKey(),
+                CapsKey(0.15f),
                 MultiSwipeAlphabetKey("Z", "+  -", KeyAction.SelectAllAction, null, "+", "-"),
                 MultiSwipeAlphabetKey("X", "@  #", KeyAction.CutAction, null, "@", "#"),
                 MultiSwipeAlphabetKey("C", "$  %", KeyAction.CopyAction, null, "$", "%"),
@@ -74,16 +74,16 @@ class TextKeyboard(
                 MultiSwipeAlphabetKey("B", ";", ";", null, null, null),
                 MultiSwipeAlphabetKey("N", "(  )", "()", null, "(", ")"),
                 MultiSwipeAlphabetKey("M", "\"  '", "\"\"", "''", "\"", "'"),
-                BackspaceKey()
+                BackspaceKey(0.15f)
             ),
             listOf(
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
-                LayoutSwitchKey("123", NumberKeyboard.Name),
                 LanguageKey(),
                 SymbolKey(",", 0.1f, KeyDef.Appearance.Variant.Alternative, "_"),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative, "`"),
-                ReturnKey(0.2f)
+                LayoutSwitchKey("123", NumberKeyboard.Name),
+                ReturnKey()
             )
         )
 
