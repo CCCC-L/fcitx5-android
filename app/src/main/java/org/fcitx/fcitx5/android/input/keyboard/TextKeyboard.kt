@@ -79,10 +79,10 @@ class TextKeyboard(
             listOf(
                 LayoutSwitchKey("!?#", PickerWindow.Key.Symbol.name),
                 LanguageKey(),
-                LayoutSwitchKey("123", NumberKeyboard.Name),
                 SymbolKey(",", 0.1f, KeyDef.Appearance.Variant.Alternative, "_"),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative, "`"),
+                LayoutSwitchKey("123", NumberKeyboard.Name),
                 ReturnKey()
             )
         )
